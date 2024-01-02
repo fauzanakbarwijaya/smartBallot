@@ -52,7 +52,7 @@
     <!-- PHP -->
     <?php
     session_start();
-    require './public/functions/conection.php';
+    require './public/functions/function.php';
     
     if (isset($_POST['login'])) {
         $username = $_POST['username'];
