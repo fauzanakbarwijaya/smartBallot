@@ -88,8 +88,8 @@ $query = mysqli_query($conn, 'SELECT * FROM candidates');
                                 <td><?= $data['candidate_term'] ?></td>
                                 <td>
                                     <div class="d-flex">
-                                        <button class="btn btn-warning"><i
-                                                class="bi bi-pen-fill text-light"></i></button>
+                                        <a href="../functions/editCandidate.php?id=<?= $data['candidate_id'] ?>" class="btn btn-warning"><i
+                                                class="bi bi-pen-fill text-light"></i></a>
                                         <a class="btn btn-danger ms-3"
                                             href="../functions/delete.php?id=<?= $data['candidate_id'] ?>">
                                             <i class="bi bi-trash-fill text-light"></i>
