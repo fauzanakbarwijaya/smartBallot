@@ -49,28 +49,56 @@ function addCandidate($data)
 function editCandidate($data)
 {
     global $conn;
+
     $id = $_GET['id'];
+    $student_id = $data['student_id'];
+    $candidate_name = $data['candidate_name'];
+    $class = $data['class'];
+    $vision = $data['vision'];
+    $mision = $data['mision'];
+    $role = $data['role'];
+    $candidate_term = $data['term'];
+    $image = uploadImage();
+    
+    $imageCheck = mysqli_query($conn, "SELECT candidate_images FROM candidates WHERE candidate_id = '$id'");
+    foreach ($imageCheck as $data) {
+        $imageNew = $data['candidate_images'];
 
-    $nama = $data['nama'];
-    $alamat = $data['alamat'];
-    $jenis_kelamin = $data['jenis_kelamin'];
-    $tlp = $data['tlp'];
+    }
 
-    $query = mysqli_query($conn, "UPDATE tb_member SET nama = '$nama', alamat = '$alamat', jenis_kelamin = '$jenis_kelamin', tlp = '$tlp' WHERE id_member = '$id'");
+    if (!empty($_FILES['candidate_images']['name'])) {
+        $existingImage = mysqli_query($conn, "SELECT candidate_images FROM candidates WHERE candidate_id = '$id'")->fetch_assoc()['candidate_images'];
+        $image = !empty($image) ? $image : $existingImage;
+    }else {
+        $image = $imageNew;
+    }
+
+    mysqli_query($conn, "UPDATE candidates SET
+        student_id = '$student_id',
+        candidate_name = '$candidate_name',
+        class = '$class',
+        vision = '$vision',
+        mision = '$mision',
+        role = '$role',
+        candidate_images = '$image',
+        candidate_term = '$candidate_term',
+        created_at = NOW()
+        WHERE candidate_id = '$id' ");
+
     if (mysqli_affected_rows($conn) > 0) {
-        echo "
-            <script>
-                alert('Data berhasil diedit!');
-                document.location.href = '../customer.php';
-            </script>
-        ";
+        echo '
+                <script>
+                    alert("Edit Candidate Success!");
+                    document.location.href = "http://localhost/my_projek/smartBallot/public/admin/candidates.php";
+                </script>
+            ';
     } else {
-        echo "
-            <script>
-                alert('Gagal mengedit data');
-                document.location.href = '../customer.php';
-            </script>
-        ";
+        echo '
+                <script>
+                    alert("Edit Candidate Failed!");
+                </script>
+            ';
     }
 }
+
 ?>

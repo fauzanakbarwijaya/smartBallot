@@ -90,7 +90,7 @@ $query = mysqli_query($conn, "SELECT * FROM candidates WHERE candidate_id = '$id
                             <input type="number" class="form-control mb-3" name="term" min="1900" max="2099"
                                 step="1" value="<?= $data['candidate_term'] ?>" required />
                             <label for="candidate_images" class="form-label">New Images</label>
-                            <input type="file"  class="form-control mb-3" name="candidate_images" accept="image/*" required />
+                            <input type="file"  class="form-control mb-3" name="candidate_images" accept="image/*"/>
                             
                         </div>
                     </div>
