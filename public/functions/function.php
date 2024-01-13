@@ -89,7 +89,7 @@ function editCandidate($data)
         echo '
                 <script>
                     alert("Edit Candidate Success!");
-                    document.location.href = "http://localhost/my_projek/smartBallot/public/admin/candidates.php";
+                    document.location.href = "http://localhost/my_projek/smartBallot/public/admin/index.php";
                 </script>
             ';
     } else {

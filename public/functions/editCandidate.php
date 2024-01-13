@@ -70,7 +70,7 @@ $query = mysqli_query($conn, "SELECT * FROM candidates WHERE candidate_id = '$id
                         </div>
                         <div class="col-md-6">
                             <label for="mision" class="form-label">Mision</label>
-                            <textarea name="mision" id="mision" class="form-control mb-3"><?= $data['mision'] ?></textarea>
+                            <textarea name="mision" id="mision" class="form-control mb-3" placeholder="mision one. mision two. mision tree"><?= $data['mision'] ?></textarea>
                             <label for="role" class="form-label">Role</label>
                             <select name="role" id="role" class="form-select mb-3" required>
                                 <?php

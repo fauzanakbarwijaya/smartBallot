@@ -1,0 +1,7 @@
+//To access Vote Pages
+Username : voteAccount
+password : 123456
+
+//To access Admin Pages
+Username : adminAccount
+password : 123456
